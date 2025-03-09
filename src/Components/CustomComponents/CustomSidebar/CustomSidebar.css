@@ -1,0 +1,202 @@
+.Sidecontainer {
+  background-color: rgb(126, 23, 28);
+  height: 100vh;
+  width: 25%;
+  padding: 2vw;
+  box-sizing: border-box;
+  position: absolute;
+}
+.helioIcon {
+  height: 6vw;
+  width: 6vw;
+}
+.routesContainer {
+  margin-top: 0%;
+  cursor: pointer;
+}
+.sidebarHeader {
+  color: white;
+  font-size: 1.8vw;
+  font-weight: 500;
+}
+.route {
+  display: flex;
+  height: auto;
+  margin-top: 0vh;
+  padding: 2%;
+  box-sizing: border-box;
+}
+.routeName:hover {
+  color: white;
+}
+.subTestName:hover {
+  color: white;
+  transition-duration: 0.3s;
+}
+.routeIcon {
+  height: 2vw;
+  width: 2vw;
+}
+.routeIconMock {
+  height: 3vw;
+  width: 3vw;
+}
+.routeName {
+  color: rgb(255, 170, 174);
+  font-size: 1.6vw;
+  margin-top: 1%;
+  margin-left: 3%;
+}
+.subTestName {
+  color: rgb(255, 170, 174);
+  font-size: 1.2vw;
+  margin-left: 3%;
+  width: 100%;
+}
+.subRouteName {
+  color: rgb(255, 170, 174);
+  font-size: 1.2vw;
+  margin-left: 3%;
+  width: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+.nestedRouteContainer {
+  margin-left: 10%;
+}
+.nestedRoute {
+  color: rgb(255, 170, 174);
+  font-size: 1vw;
+  margin-left: 3%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+.logout {
+  margin-top: 0%;
+  margin-left: -1%;
+}
+.logoutText {
+  margin-top: -0.2%;
+}
+
+@media screen and (max-width: 430px) {
+  .menuIconContainer {
+  }
+  .menuIcon {
+  }
+  .Sidecontainer {
+    background-color: rgb(126, 23, 28, 0.9);
+    backdrop-filter: blur(5px);
+    height: 100vh;
+    width: 90%;
+    z-index: 9999999999;
+    padding: 2vw;
+    box-sizing: border-box;
+    position: absolute;
+    animation: show 0.2s ease-in-out forwards;
+  }
+  @keyframes show {
+    from {
+      transform: translateX(-90%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+  .helioIcon {
+    height: 24vw;
+    width: 24vw;
+  }
+  .routesContainer {
+    margin-top: 5%;
+    cursor: pointer;
+  }
+  .sidebarHeader {
+    color: white;
+    font-size: 5vw;
+    font-weight: 500;
+  }
+  .route {
+    display: flex;
+    height: auto;
+    margin-top: 0%;
+    padding: 2%;
+    box-sizing: border-box;
+  }
+  .routeName:hover {
+    color: white;
+  }
+  .subTestName:hover {
+    color: white;
+    transition-duration: 0.3s;
+  }
+  .routeIcon {
+    height: 15vw;
+    width: 15vw;
+    display: none;
+  }
+  .routeIconMock {
+    height: 15vw;
+    width: 15vw;
+    display: none;
+  }
+  .routeName {
+    color: rgb(255, 170, 174);
+    font-size: 5vw;
+    margin-top: 1%;
+    margin-left: 3%;
+  }
+  .subTestName {
+    color: rgb(255, 170, 174);
+    font-size: 4vw;
+    margin-left: 3%;
+    width: 100%;
+  }
+  .subRouteName {
+    color: rgb(255, 170, 174);
+    font-size: 4vw;
+    margin-left: 3%;
+    width: 100%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  .nestedRouteContainer {
+    margin-left: 10%;
+  }
+  .nestedRoute {
+    color: rgb(255, 170, 174);
+    font-size: 4vw;
+    margin-left: 3%;
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  .logout {
+    margin-top: 0%;
+  }
+  .logoutText {
+    border: 2px solid white;
+    border-radius: 2vw;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: rgb(126, 23, 28);
+    font-size: 6vw;
+    font-weight: 600;
+    width: 100%;
+    padding-left: 2%;
+  }
+}

@@ -1,0 +1,1 @@
+export const THEME_COLOR ='#DB1A1A'

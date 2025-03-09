@@ -1,0 +1,28 @@
+.descriptorContainer{
+    height: 60vh;
+    width: 50%;
+    border: 1.5px solid rgb(185, 185, 185);
+    border-radius: 2vw;
+    margin-left: 25%;
+    margin-top: 20vh;
+    padding: 2%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: rgb(245, 245, 245);
+}
+.descriptorHeader{
+    font-size: 2vw;   
+}
+.descriptorInfo{
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    margin-top: 2%;
+    font-size: 1.3vw;
+    color: gray;
+
+}

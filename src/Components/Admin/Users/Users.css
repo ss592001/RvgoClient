@@ -1,0 +1,59 @@
+.testIndicator {
+  background-color: rgb(126, 23, 28);
+  box-sizing: border-box;
+  border-radius: 0.7vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline-start: 2%;
+  padding-inline-end: 2%;
+  margin-left: 2%;
+}
+.testIndicatorText {
+  color: white;
+  font-size: 1vw;
+}
+.assignBtn {
+  background-color: rgb(42, 120, 255);
+  cursor: pointer;
+}
+.userAnalysisContainer {
+  box-shadow: 2px 2px 10px -4px rgb(137, 137, 137);
+  margin-right: 4%;
+  min-width: 45%;
+
+  border-radius: 1vw;
+  background-color: rgb(255, 195, 198);
+}
+
+@media screen and (max-width: 430px) {
+  .testIndicator {
+    background-color: rgb(126, 23, 28);
+    box-sizing: border-box;
+    border-radius: 0.7vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-inline-start: 2%;
+    padding-inline-end: 2%;
+    margin-left: 2%;
+  }
+  .testIndicatorText {
+    color: white;
+    font-size: 1vw;
+  }
+  .assignBtn {
+    background-color: rgb(42, 120, 255);
+    cursor: pointer;
+  }
+  .overflowContainer {
+  }
+  .userAnalysisContainer {
+    box-shadow: 2px 2px 10px -4px rgb(137, 137, 137);
+    margin-right: 4%;
+    min-width: 32%;
+    background-color: rgb(255, 195, 198);
+  }
+}

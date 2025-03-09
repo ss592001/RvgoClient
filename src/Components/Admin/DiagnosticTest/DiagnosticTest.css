@@ -1,0 +1,27 @@
+.loaderContainer {
+  left: 55%;
+  top: 40vh;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 430px) {
+  .loaderContainer {
+    left: -5%;
+    top: 40vh;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+  }
+  .loaderText {
+    font-size: 6vw;
+  }
+  .userLoader {
+    margin-left: 7%;
+  }
+  .overflowContainer {
+    width: 115%;
+    overflow: scroll;
+  }
+}

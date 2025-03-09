@@ -1,0 +1,33 @@
+.loaderContainer {
+  position: absolute;
+  left: 60% !important;
+  top: 45vh !important;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.loaderText {
+  font-size: 1.4vw;
+  color: rgb(49, 49, 195);
+  margin-left: -50%;
+}
+
+@media screen and (max-width: 430px) {
+  .loaderContainer {
+    left: 35% !important;
+    top: 40vh !important;
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+  }
+  .loaderText {
+    font-size: 6vw;
+  }
+  .userLoader {
+    margin-left: 7%;
+  }
+  .overflowContainer {
+    width: 115%;
+    overflow: scroll;
+  }
+}

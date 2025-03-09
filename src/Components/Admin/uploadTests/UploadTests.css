@@ -1,0 +1,162 @@
+.testMoreInfoContainer {
+  width: 50%;
+  margin-top: 2%;
+  background-color: rgb(227, 227, 227);
+  border-radius: 0.7vw;
+  padding: 2%;
+  box-sizing: border-box;
+}
+.fileinputfortraining {
+  all: unset;
+  display: none;
+  color: rgb(219, 219, 219);
+}
+
+#fileLabel {
+  border: 2px dashed rgb(126, 23, 28);
+  /* padding: 2%; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 1vw;
+  color: rgb(126, 23, 28);
+  /* color: rgb(255, 206, 208); */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  /* box-sizing: border-box; */
+}
+.fileInputBox {
+  /* height: 30vh;
+  display: flex;
+  margin-top: 1%;
+  flex-direction: column; */
+  width: 100%;
+  height: 30vh;
+}
+
+.fileinputbtn {
+  width: 100%;
+  border-radius: 0.7vw;
+  background-color: #16aee8;
+  padding: 1%;
+  margin-top: 2%;
+}
+
+.file-main {
+  width: 100%;
+  display: flex;
+}
+
+.training-status {
+  color: #0f0;
+  padding: 3%;
+  text-align: center;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #0f0;
+  margin: 1%;
+  box-sizing: border-box;
+  border-radius: 0.7vw;
+  margin-top: 3%;
+  margin-left: 2%;
+}
+.uploadBtn {
+  background-color: rgb(42, 120, 255);
+  cursor: pointer;
+  padding: 5%;
+  border-radius: 0.7vw;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 430px) {
+  .testMoreInfoContainer {
+    width: 50%;
+    margin-top: 2%;
+    background-color: rgb(227, 227, 227);
+    border-radius: 0.7vw;
+    padding: 2%;
+    box-sizing: border-box;
+    border-radius: 2vw;
+  }
+  .fileinputfortraining {
+    all: unset;
+    display: none;
+  }
+
+  #fileLabel {
+    border: 2px dashed rgb(126, 23, 28);
+    /* padding: 2%; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 1vw;
+    color: rgb(126, 23, 28);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    /* box-sizing: border-box; */
+  }
+  .fileInputBox {
+    /* height: 30vh;
+  display: flex;
+  margin-top: 1%;
+  flex-direction: column; */
+    width: 100%;
+    height: 10vh;
+  }
+
+  .fileinputbtn {
+    width: 100%;
+    border-radius: 0.7vw;
+    background-color: #16aee8;
+    padding: 1%;
+    margin-top: 2%;
+  }
+
+  .file-main {
+    width: 100%;
+    display: flex;
+  }
+
+  .training-status {
+    color: #0f0;
+    padding: 3%;
+    text-align: center;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #0f0;
+    margin: 1%;
+    box-sizing: border-box;
+    border-radius: 0.7vw;
+    margin-top: 3%;
+    margin-left: 2%;
+  }
+  .uploadBtn {
+    background-color: rgb(42, 120, 255);
+    cursor: pointer;
+    padding: 5%;
+    border-radius: 0.7vw;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .uploadTestHeader {
+    width: 100%;
+  }
+}

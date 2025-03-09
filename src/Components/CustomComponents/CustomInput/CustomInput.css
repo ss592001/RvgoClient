@@ -1,0 +1,47 @@
+.inputLabel {
+  font-weight: 400;
+  font-family: sans-serif;
+  color: black;
+  margin-top: 3%;
+}
+.inputStyle {
+  all: unset;
+  width: 93%;
+  height: 2vh;
+  /* border:1.4px solid black; */
+  border-radius: 0.4vw;
+  padding: 1vw;
+  color: black;
+  font-size: 1.2vw;
+  margin-top: 0.3vw;
+  background-color: rgb(243, 243, 243);
+}
+.inputStyle::placeholder {
+  color: gray;
+  font-size: 1.2vw;
+}
+@media screen and (max-width: 430px) {
+  .inputLabel {
+    font-weight: 400;
+    font-family: sans-serif;
+    color: black;
+    margin-top: 3%;
+  }
+  .inputStyle {
+    all: unset;
+    width: 100%;
+    height: 6vh;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1vw;
+    padding: 1vw;
+    color: black;
+    font-size: 4vw;
+    margin-top: 0.3vw;
+    box-sizing: border-box;
+    background-color: rgb(243, 243, 243);
+  }
+  .inputStyle::placeholder {
+    color: rgb(197, 197, 197);
+    font-size: 4vw;
+  }
+}

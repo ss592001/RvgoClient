@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1617 1111" width="1617" height="1111">
+	<title>bg_blur-02-svg</title>
+	<defs>
+		<filter x="-50%" y="-50%" width="200%" height="200%" id="f1"> <feGaussianBlur stdDeviation="75"/> </filter>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-363.2,-883.976,1232.12,-506.242,1081,791.493)">
+			<stop offset="0" stop-color="#860d1c" stop-opacity=".6"/>
+			<stop offset="1" stop-color="#860d1c" stop-opacity="0"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { filter: url(#f1);fill: url(#g1) } 
+	</style>
+	<g>
+		<path class="s0" d="m150 555.5c0-224 294.8-405.5 658.5-405.5 363.7 0 658.5 181.5 658.5 405.5 0 224-294.8 405.5-658.5 405.5-363.7 0-658.5-181.5-658.5-405.5z"/>
+	</g>
+</svg>

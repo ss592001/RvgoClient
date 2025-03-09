@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .App {
   text-align: center;
 }
@@ -6,6 +9,16 @@
   height: 40vmin;
   pointer-events: none;
 }
+.no-visible-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,4 +48,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.calculator {
+  position: absolute;
+  height: 55vh;
+  width: 50vw;
+  z-index: 200000;
+  left: 10vw;
+  top: 20vh;
+  box-shadow: 2px 2px 14px -5px black;
+  background-color: white;
+}
+.c2 {
+  display: none;
 }

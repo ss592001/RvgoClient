@@ -1,0 +1,73 @@
+.checkBoxBtn {
+  margin-left: 35%;
+  background-color: black;
+  transform: scale(2);
+}
+/* Shaking animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  /* display: inline-block;
+  animation: shake 0.5s ease-in-out;
+  animation-iteration-count: infinite; */
+}
+.userToAssignTestHeader {
+  background-color: rgb(126, 23, 28);
+  color: white;
+  border-radius: 0.4vw;
+  font-size: 1.4vw;
+  padding: 1%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  margin-left: 5%;
+  width: auto;
+  max-width: 80%;
+  /* height: 2%; */
+}
+
+@media screen and (max-width: 430px) {
+  .checkBoxBtn {
+    margin-left: 35%;
+    background-color: black;
+    transform: scale(2);
+  }
+
+  .userToAssignTestHeader {
+    background-color: rgb(126, 23, 28);
+    color: white;
+    border-radius: 1vw;
+    font-size: 4vw;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin-left: 0%;
+    width: 80%;
+    overflow-x: scroll;
+  }
+  .noTestMessage {
+    font-size: 6vw;
+  }
+}
