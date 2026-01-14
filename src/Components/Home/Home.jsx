@@ -36,7 +36,7 @@ function Home() {
       display: "none",
       delay: 1.5,
       onComplete: () => {
-        setIsLoading(false); // Hide loader by setting isLoading to false
+        setIsLoading(false); 
       },
     });
 
@@ -56,8 +56,8 @@ function Home() {
         <>
           <BgAnimation />
           <HeroSection />
-          <Intro />
           <BestSeller />
+          <Intro />
           <Shop />
           <Achivers />
           <Footer />

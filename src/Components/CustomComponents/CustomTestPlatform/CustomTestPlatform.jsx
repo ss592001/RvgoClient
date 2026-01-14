@@ -11,6 +11,11 @@ import ClimbingBoxLoader from "react-spinners/ClipLoader";
 import { toast } from "react-toastify";
 import reference from "../../../images/reference.png";
 import "react-toastify/dist/ReactToastify.css";
+import CustomInput from "../CustomInput/CustomInput";
+
+import Swal from "sweetalert2";
+import CustomModal from "../CustomModal/CustomModal";
+import CustomButton from "../CustomButton/CustomButton";
 function Desmos({ setIsDesmosVisible }) {
   return (
     <>
@@ -116,6 +121,8 @@ const QuestionsTavPreviewer = ({
   currentQuestion,
   setCurrentQuestion,
   answers,
+  start,
+  end,
 }) => {
   const handleFindQuestionAttempted = (question) => {
     const isAttempted =
@@ -136,6 +143,7 @@ const QuestionsTavPreviewer = ({
       );
     return isAttempted >= 0 ? true : false;
   };
+
   return (
     <>
       <div
@@ -192,11 +200,12 @@ const QuestionsTavPreviewer = ({
             style={{ overflow: "scroll", height: "50vh" }}
           >
             {test.Test &&
-              test.Test.map((question, index) => {
+              test.Test.slice(start, end).map((question, index) => {
+                const actualIndex = start + index;
                 return (
                   <>
                     <div
-                      key={index}
+                      key={actualIndex}
                       className="questioTab"
                       style={
                         handleFindQuestionAttempted(question)
@@ -207,7 +216,7 @@ const QuestionsTavPreviewer = ({
                           : {}
                       }
                       onClick={() => {
-                        setCurrentQuestion(index);
+                        setCurrentQuestion(actualIndex);
                       }}
                     >
                       {handleFindQuestionIsSetForReview(question) ? (
@@ -229,7 +238,7 @@ const QuestionsTavPreviewer = ({
                       ) : (
                         <></>
                       )}
-                      {index === currentQuestion ? (
+                      {actualIndex === currentQuestion ? (
                         <>
                           <img
                             width="50"
@@ -291,11 +300,43 @@ const useCountdown = (timeLeft, setTimeLeft, setIsTimeOver) => {
 
   return formatTime(timeLeft);
 };
+const Timer = ({ setBreakPopup }) => {
+  const [time, setTime] = useState(600);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime((prevTime) => {
+        if (prevTime <= 1) {
+          setBreakPopup(false);
+          clearInterval(interval);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
+  return (
+    <div>
+      <h2>Time Left: {formatTime(time)}</h2>
+    </div>
+  );
+};
 const CustomTestPlatform = () => {
   const question = useSelector((state) => state.user.activeTest);
   const testStartTime = useSelector((state) => state.user.startTime);
   const auth = useSelector((state) => state.user.auth);
+  const tester = useSelector((state) => state.user.tester);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isDesmosVisible, setIsDesmosVisible] = useState(false);
@@ -310,16 +351,213 @@ const CustomTestPlatform = () => {
   const [timeLeft, setTimeLeft] = useState(question.testTime * 60);
   const [loader, setLoader] = useState(false);
   const [isTimeOver, setIsTimeOver] = useState(false);
+  const [moduleActive, setModuleActive] = useState(1);
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(question.Test.length);
 
+  const [breakPopup, setBreakPopup] = useState(false);
+
+  useEffect(() => {
+    if (window?.MathJax && window?.MathJax?.typesetPromise) {
+      window?.MathJax?.typesetPromise();
+    }
+  }, [currentQuestion]);
   const handleProceede = () => {
-    console.log(answers);
     setStartTime(Date.now());
     setCurrentQuestion(currentQuestion + 1);
   };
 
+  useEffect(() => {
+    if (question.Flt) {
+      if (isTimeOver) {
+        if (moduleActive === 1) {
+          setModuleActive(2);
+          setCurrentQuestion(27);
+          setStart(27);
+          setEnd(54);
+          setIsTimeOver(false);
+          toast.success("Module 1 time Over.");
+          return setTimeLeft(32 * 60);
+        }
+        if (moduleActive === 2) {
+          setBreakPopup(true);
+          setModuleActive(3);
+          setCurrentQuestion(54);
+          setStart(54);
+          setEnd(76);
+          setIsTimeOver(false);
+          toast.success("Module 2 time Over.");
+          return setTimeLeft(38 * 60);
+        }
+        if (moduleActive === 3) {
+          setModuleActive(4);
+          setCurrentQuestion(76);
+          setStart(76);
+          setEnd(98);
+          setIsTimeOver(false);
+          toast.success("Module 3 time Over.");
+          return setTimeLeft(35 * 60);
+        }
+        if (moduleActive === 4) {
+          toast.success("Time over .Submitting the test.");
+          return handleSubmitTest();
+        }
+      }
+    } else if (question.sectional === 1) {
+      if (isTimeOver) {
+        if (moduleActive === 3) {
+          setModuleActive(4);
+          setCurrentQuestion(22);
+          setStart(22);
+          setEnd(44);
+          setIsTimeOver(false);
+          toast.success("Module 1 time Over.");
+          return setTimeLeft(35 * 60);
+        }
+        if (moduleActive === 4) {
+          toast.success("Time over .Submitting the test.");
+          return handleSubmitTest();
+        }
+      }
+    } else if (question.sectional === 2) {
+      if (isTimeOver) {
+        if (moduleActive === 1) {
+          setModuleActive(2);
+          setCurrentQuestion(27);
+          setStart(27);
+          setEnd(54);
+          setIsTimeOver(false);
+          toast.success("Module 1 time Over.");
+          return setTimeLeft(32 * 60);
+        }
+        if (moduleActive === 4) {
+          toast.success("Time over .Submitting the test.");
+          return handleSubmitTest();
+        }
+      }
+    } else if (!question.Flt && question.sectional === 0) {
+      if (isTimeOver) {
+        toast.success("Test is over .Submitting the test.");
+        return handleSubmitTest();
+      }
+    }
+  }, [isTimeOver]);
+
+  useEffect(() => {
+    if (question.Flt) {
+      if (currentQuestion === 0) {
+        setStart(0);
+        setEnd(27);
+        setTimeLeft(32 * 60);
+        return setModuleActive(1);
+      }
+      if (currentQuestion === 27) {
+        setStart(27);
+        setEnd(54);
+        if (moduleActive === 1) setTimeLeft(32 * 60);
+
+        return setModuleActive(2);
+      }
+      if (currentQuestion === 54) {
+        if (moduleActive === 2) setBreakPopup(true);
+        setStart(54);
+        setEnd(76);
+        if (moduleActive === 2) setTimeLeft(45 * 60);
+        return setModuleActive(3);
+      }
+      if (currentQuestion === 76) {
+        setStart(76);
+        setEnd(98);
+        if (moduleActive === 3) setTimeLeft(35 * 60);
+        return setModuleActive(4);
+      }
+    } else if (question.sectional === 1) {
+      if (currentQuestion === 0) {
+        setStart(0);
+        setEnd(22);
+        setTimeLeft(35 * 60);
+        return setModuleActive(3);
+      }
+      if (currentQuestion === 22) {
+        setStart(22);
+        setEnd(44);
+        if (moduleActive === 3) setTimeLeft(35 * 60);
+        return setModuleActive(4);
+      }
+    } else if (question.sectional === 2) {
+      if (currentQuestion === 0) {
+        setStart(0);
+        setEnd(27);
+        setTimeLeft(32 * 60);
+        return setModuleActive(1);
+      }
+      if (currentQuestion === 27) {
+        setStart(27);
+        setEnd(54);
+        if (moduleActive === 1) setTimeLeft(32 * 60);
+
+        return setModuleActive(2);
+      }
+    }
+  }, [currentQuestion, question.Flt, question.sectional]);
+
+  const splitToModules = () => {
+    if (moduleActive === 1) {
+      return <div className="module">Module 1 English</div>;
+    }
+    if (moduleActive === 2) {
+      return <div className="module">Module 2 English</div>;
+    }
+    if (moduleActive === 3) {
+      return <div className="module">Module 1 Maths</div>;
+    }
+    if (moduleActive === 4) {
+      return <div className="module">Module 2 Maths</div>;
+    }
+  };
+  // const handlePressBackButton = () => {
+  //   setStartTime(Date.now());
+  //   setCurrentQuestion(currentQuestion - 1);
+  // };
   const handlePressBackButton = () => {
-    setStartTime(Date.now());
-    setCurrentQuestion(currentQuestion - 1);
+    let minQuestion = 0;
+    if (question.Flt) {
+      console.log({
+        currentQuestion,
+        minQuestion,
+        isFLT: question.isFLT,
+        sectional: question.sectional,
+        moduleActive,
+      });
+
+      if (moduleActive === 1) {
+        minQuestion = 0;
+      } else if (moduleActive === 2) {
+        minQuestion = 27;
+      } else if (moduleActive === 3) {
+        minQuestion = 54;
+      } else if (moduleActive === 4) {
+        minQuestion = 76;
+      }
+    } else if (question.sectional === 1) {
+      console.log("....");
+      if (moduleActive === 3) {
+        minQuestion = 0;
+      } else if (moduleActive === 4) {
+        minQuestion = 22;
+      }
+    } else if (question.sectional === 2) {
+      console.log("////");
+      if (moduleActive === 1) {
+        minQuestion = 0;
+      } else if (moduleActive === 2) {
+        minQuestion = 27;
+      }
+    }
+    if (Number(currentQuestion) > minQuestion) {
+      setStartTime(Date.now());
+      setCurrentQuestion(currentQuestion - 1);
+    }
   };
 
   useEffect(() => {
@@ -340,17 +578,25 @@ const CustomTestPlatform = () => {
     }
   }, []);
 
-  const handleCalculateTimeTakenToSolveQuestion = () => {
-    const diffInMs = Math.abs(startTime - new Date());
-    const diffInHours = Math.floor(
-      (diffInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const diffInMinutes = Math.floor(
-      (diffInMs % (1000 * 60 * 60)) / (1000 * 60)
-    );
-    const diffInSeconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
+  // const handleCalculateTimeTakenToSolveQuestion = () => {
+  //   const diffInMs = Math.abs(startTime - new Date());
+  //   const diffInMinutes = Math.floor(
+  //     (diffInMs % (1000 * 60 * 60)) / (1000 * 60)
+  //   );
+  //   const diffInSeconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
 
-    return `${diffInMinutes}:${diffInSeconds}`;
+  //   return `${diffInMinutes}:${diffInSeconds}`;
+  // };
+
+  const handleCalculateTimeTakenToSolveQuestion = () => {
+    const now = Date.now(); // ms since epoch
+    const diffInMs = now - startTime; // difference in ms
+
+    const totalSeconds = Math.floor(diffInMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   const handleMarkForReviewToTrue = () => {
@@ -360,7 +606,6 @@ const CustomTestPlatform = () => {
     const index = answers.findIndex(
       (ans) => ans.question.id === question.Test[currentQuestion].id
     );
-
     const updatedAnswer = {
       ...currentAnswer,
       isMarkedForReview: !currentAnswer.isMarkedForReview,
@@ -381,7 +626,7 @@ const CustomTestPlatform = () => {
     const updatedAnswer = {
       ...currentAnswer,
       isMarkedForReview: !currentAnswer.isMarkedForReview,
-      isUnattempted: true,
+      isUnattempted: currentAnswer.isSaved?false:true,
       question: question.Test[currentQuestion],
       time: handleCalculateTimeTakenToSolveQuestion(),
     };
@@ -399,8 +644,8 @@ const CustomTestPlatform = () => {
     const updatedAnswer = {
       question: question.Test[currentQuestion],
       isMarkedForReview: false,
-      isSaved: true,
-      isUnattempted: false,
+      isSaved: option === "" ? false : true,
+      isUnattempted: option === "" ? true : false,
       answer: newAnswer,
       time: handleCalculateTimeTakenToSolveQuestion(),
     };
@@ -484,6 +729,10 @@ const CustomTestPlatform = () => {
     dispatch(
       setTestOtherDetails({ startTime: testStartTime, endTime: new Date() })
     );
+    // if (tester === "admin") {
+    //   navigate("/test/submit/result");
+    //  return setLoader(false);
+    // }
     PostRoute(
       "submitTest",
       () => {
@@ -498,19 +747,49 @@ const CustomTestPlatform = () => {
     );
   };
 
-  useEffect(() => {
-    if (isTimeOver) {
-      toast.success("Test is over .Submitting the test.");
-      handleSubmitTest();
-    }
-  }, [isTimeOver]);
   return (
     <>
+      {breakPopup && (
+        <CustomModal>
+          <div className="header">BREAK</div>
+          <div className="header">
+            A 10 minutes break is provided before the starting of the next
+            module. You can skip the break by clicking the button and continue
+            the test.
+          </div>
+          <div className="header">
+            <Timer setBreakPopup={setBreakPopup} />
+          </div>
+          <CustomButton
+            text={"SKIP"}
+            handleClick={() => {
+              setBreakPopup(false);
+              setModuleActive(3);
+              setStart(54);
+              setEnd(76);
+              setTimeLeft(35 * 60);
+            }}
+          />
+        </CustomModal>
+      )}
       {isDesmosVisible && <Desmos setIsDesmosVisible={setIsDesmosVisible} />}
       {isRefSheetVisible && (
         <RefrenceSheet SetIsRefSheetVisible={SetIsRefSheetVisible} />
       )}
-      {(isSubmiting || isTimeOver) && (
+      {(isSubmiting || isTimeOver) && question?.Flt && moduleActive === 4 && (
+        <SubmitTestConfirmation
+          isOpen={isSubmiting || isTimeOver}
+          onClose={() => {
+            setisSubmiting(!isSubmiting);
+          }}
+          onConfirm={handleSubmitTest}
+          isCancelButtonVisible={true}
+          isConfirmButtonVisible={true}
+          loader={loader}
+          message={"Are you sure you want to submit the test ?"}
+        />
+      )}
+      {(isSubmiting || isTimeOver) && !question?.Flt && (
         <SubmitTestConfirmation
           isOpen={isSubmiting || isTimeOver}
           onClose={() => {
@@ -531,6 +810,8 @@ const CustomTestPlatform = () => {
           selectedQuestion={selectedQuestion}
           setCurrentQuestion={setCurrentQuestion}
           answers={answers}
+          start={start}
+          end={end}
         />
       )}
       <div
@@ -547,30 +828,33 @@ const CustomTestPlatform = () => {
             {useCountdown(timeLeft, setTimeLeft, setIsTimeOver)} s
           </div>
           <div className="testHelper">
-            <div
-              className="testheplers"
-              onClick={() => {
-                setIsDesmosVisible(true);
-              }}
-            >
-              <div>
-                <img
-                  width="30"
-                  height="30"
-                  src="https://img.icons8.com/ios-glyphs/30/1A1A1A/calculator.png"
-                  alt="calculator"
-                  className="headerIcon"
-                />
+            {question.sectional !== 2 && (
+              <div
+                className="testheplers"
+                onClick={() => {
+                  setIsDesmosVisible(true);
+                }}
+              >
+                <div style={{ marginLeft: "27%" }}>
+                  <img
+                    width="30"
+                    height="30"
+                    src="https://img.icons8.com/ios-glyphs/30/1A1A1A/calculator.png"
+                    alt="calculator"
+                    className="headerIcon"
+                  />
+                </div>
+                Calculator
               </div>
-              Calculator
-            </div>
+            )}
+
             <div
               className="testheplers"
               onClick={() => {
                 SetIsRefSheetVisible(true);
               }}
             >
-              <div>
+              <div style={{ marginLeft: "23%" }}>
                 <img
                   width="24"
                   height="24"
@@ -583,6 +867,7 @@ const CustomTestPlatform = () => {
             </div>
           </div>
         </div>
+
         <div className="testPreviewer">
           {question &&
             question.Test.map((q, index) => {
@@ -591,8 +876,20 @@ const CustomTestPlatform = () => {
                   {index === currentQuestion && (
                     <>
                       <div className="questionContainer" key={index}>
+                        {(question.Flt || question.sectional !== 0) &&
+                          splitToModules()}
                         <div className="questionHeader">
-                          <div className="questionSno">{index + 1}.</div>
+                          <div className="questionSno">
+                            {question.Flt ? (
+                              <>{index + 1 - start}.</>
+                            ) : question.sectional === 1 ? (
+                              <>{index + 1 - start}.</>
+                            ) : question.sectional === 2 ? (
+                              <>{index + 1 - start}.</>
+                            ) : (
+                              <>{index + 1}.</>
+                            )}
+                          </div>
 
                           <div className="markForReview">
                             {handleFindQuestionIsSetForReview() ? (
@@ -629,7 +926,7 @@ const CustomTestPlatform = () => {
                           <div className="questionType">MCQ</div>
                         </div>
                         <div className="mainQuestionContainer">
-                          {q.diagram !== "" && (
+                          {q?.diagram && q.diagram !== "" && (
                             <div className="questionImageontainer">
                               <img
                                 src={q.diagram}
@@ -638,20 +935,52 @@ const CustomTestPlatform = () => {
                               />
                             </div>
                           )}
+                          {q.passage !== "" && (
+                            <div
+                              className="question"
+                              style={{
+                                justifyContent: "left",
+                                alignItems: "left",
+                                textAlign: "left",
+                              }}
+                            >
+                              <div>
+                                <span style={{ fontWeight: "bolder" }}>
+                                  Passage
+                                </span>{" "}
+                                <br />
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: q.passage,
+                                  }}
+                                ></span>
+                                {/* {q.passage} */}
+                              </div>
+                            </div>
+                          )}
 
                           <div
                             className="question"
                             style={{
-                              display: "flex",
+                              display: "block",
                               justifyContent: "left",
                               alignItems: "left",
                               textAlign: "left",
                             }}
                           >
-                            {q.question}
+                            <span style={{ fontWeight: "bolder" }}>
+                              {q.passage !== "" ? "Question" : ``}
+                              {q.passage !== "" ? <br /> : ""}
+                            </span>
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: q.question,
+                              }}
+                            ></span>
+                            {/* {q.question} */}
                           </div>
                           <div className="optionsContainer">
-                            {q.options.length > 0 ? (
+                            {q.options.length > 0 && q.type === "objective" ? (
                               q.options.map((option, index) => {
                                 return (
                                   <div
@@ -692,22 +1021,29 @@ const CustomTestPlatform = () => {
                                         textAlign: "left",
                                       }}
                                     >
-                                      {option?.split(".")[1]
-                                        ? option?.split(".")[1]
-                                        : option}
+                                      {option.replace(
+                                        index === 0
+                                          ? "A. "
+                                          : index === 1
+                                          ? "B. "
+                                          : index === 2
+                                          ? "C. "
+                                          : "D. ",
+                                        ""
+                                      )}
                                     </div>
                                   </div>
                                 );
                               })
                             ) : (
                               <>
-                                <input
-                                  placeholder="Your answer"
+                                <CustomInput
+                                  placeholder={"Enter Your Answer Here"}
                                   value={answers[currentQuestion]?.answer || ""}
-                                  onChange={(e) =>
+                                  handleInputChange={(e) =>
                                     handleTextAnswerChange(e.target.value)
                                   }
-                                ></input>
+                                />
                               </>
                             )}
                           </div>
@@ -724,12 +1060,29 @@ const CustomTestPlatform = () => {
             Student Test
           </div>
           <div
+            style={{ cursor: "pointer" }}
             className="questionNoIdentifier"
             onClick={() => {
               setQuestionTabPreviewer(true);
             }}
           >
-            Question - {currentQuestion + 1} of {question.Test.length}
+            {question.Flt ? (
+              <div>
+                Question - {currentQuestion - start + 1} of {end - start}
+              </div>
+            ) : question.sectional === 1 ? (
+              <div>
+                Question - {currentQuestion - start + 1} of {end - start}
+              </div>
+            ) : question.sectional === 2 ? (
+              <div>
+                Question - {currentQuestion - start + 1} of {end - start}
+              </div>
+            ) : (
+              <div>
+                Question - {currentQuestion + 1} of {question.Test.length}
+              </div>
+            )}
           </div>
           <div className="footerButtons">
             <button

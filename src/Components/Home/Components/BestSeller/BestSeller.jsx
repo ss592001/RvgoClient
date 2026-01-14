@@ -490,19 +490,25 @@ const BestSeller = () => {
               </div>
               <div className="parallax__col col--2">
                 <div className="parallax__heading-wrap">
-                  <h2 className="parallax__heading">
+                  <h2
+                    className="parallax__heading"
+                    style={{ color: "#101734" }}
+                  >
                     Why <br />
                     {/* <span className="parallax__heading-span">You Should</span>{" "} */}
                     <span
                       data-anim-parallax="elements"
                       className="parallax__heading-span"
                     >
-                      <strong className="parallax__heading-strong active">
+                      <strong
+                        className="parallax__heading-strong active"
+                        style={{ color: "#101734" }}
+                      >
                         Choose
                       </strong>{" "}
                     </span>
                     <br />
-                    Us
+                    <strong style={{ color: "#101734" }}>Us</strong>
                   </h2>
                 </div>
                 <div
@@ -582,7 +588,7 @@ const BestSeller = () => {
                     </a>
                     <div className="parallax__founder-img-wrap">
                       <img
-                        src={img_founder}
+                        src={"https://img.icons8.com/stickers/100/book.png"}
                         loading="lazy"
                         width={80}
                         alt=""
@@ -591,13 +597,12 @@ const BestSeller = () => {
                     </div>
                     <h4 className="parallax__founder-text">
                       <span className="parallax__founder-title">
-                        Achal Sharma
                         <strong className="parallax__founder-title-line">
-                          &nbsp;
+                         Secure Future &nbsp;
                         </strong>
                         <br />
                       </span>
-                      <span className="parallax__founder-span">Founder</span>
+                      <span className="parallax__founder-span"></span>
                     </h4>
                   </div>
                 </div>
@@ -639,7 +644,7 @@ const BestSeller = () => {
                     </a>
                     <div className="parallax__founder-img-wrap">
                       <img
-                        src={img_founder}
+                        src={"https://img.icons8.com/stickers/100/book.png"}
                         loading="lazy"
                         width={80}
                         alt=""
@@ -648,13 +653,13 @@ const BestSeller = () => {
                     </div>
                     <h4 className="parallax__founder-text">
                       <span className="parallax__founder-title">
-                        Achal Sharma
+                        Future Ready
                         <strong className="parallax__founder-title-line">
                           &nbsp;
                         </strong>
                         <br />
                       </span>
-                      <span className="parallax__founder-span">Founder</span>
+                      <span className="parallax__founder-span"></span>
                     </h4>
                   </div>
                 </div>
@@ -695,7 +700,7 @@ const BestSeller = () => {
                     </a>
                     <div className="parallax__founder-img-wrap">
                       <img
-                        src={img_founder}
+                        src={"https://img.icons8.com/stickers/100/book.png"}
                         loading="lazy"
                         width={80}
                         alt=""
@@ -704,13 +709,13 @@ const BestSeller = () => {
                     </div>
                     <h4 className="parallax__founder-text">
                       <span className="parallax__founder-title">
-                        Achal sharma
+                        Digital Exam Prepration
                         <strong className="parallax__founder-title-line">
                           &nbsp;
                         </strong>
                         <br />
                       </span>
-                      <span className="parallax__founder-span">Founder</span>
+                      <span className="parallax__founder-span"></span>
                     </h4>
                   </div>
                 </div>

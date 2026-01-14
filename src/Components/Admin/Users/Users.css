@@ -27,6 +27,97 @@
   background-color: rgb(255, 195, 198);
 }
 
+/* Overlay for background blur */
+/* .selectionOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.selectionOverlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.selectionCard {
+  position: relative;
+  width: 25vw;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1vw;
+  padding: 2%;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  color: black;
+
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.selectionOverlay.active .selectionCard {
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.selectionOverlay.closing .selectionCard {
+  transform: scale(1);
+  opacity: 0;
+} */
+
+/* Cross button */
+.SelectionCardCross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.actionHead {
+  font-size: 1.3vw;
+  display: flex;
+  align-self: center;
+  justify-content: left;
+  text-align: center;
+  color: black;
+  font-weight: 500;
+}
+
+.testDiscriptor {
+  display: flex;
+  gap: 2%;
+}
+.usersContainer {
+  padding: 2%;
+}
+.featuresTagAssigner {
+  background-color: rgb(230, 230, 230);
+  border-radius: 2vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2%;
+  font-size: 1vw;
+  margin-left: 1%;
+}
+.overflow {
+  overflow: scroll;
+}
+.centerContent {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 430px) {
   .testIndicator {
     background-color: rgb(126, 23, 28);
@@ -39,6 +130,11 @@
     padding-inline-start: 2%;
     padding-inline-end: 2%;
     margin-left: 2%;
+  }
+  .centerContent {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
   .testIndicatorText {
     color: white;
@@ -55,5 +151,209 @@
     margin-right: 4%;
     min-width: 32%;
     background-color: rgb(255, 195, 198);
+  }
+  .testDiscriptorCells {
+    display: block;
+  }
+  .featuresTagAssigner {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 230, 230);
+    border-radius: 2vw;
+    padding: 1.5%;
+    width: 15vw;
+    margin-bottom: 2%;
+    font-size: 1.8vw;
+  }
+  .practiceAction {
+    margin-left: 2%;
+    font-size: 1.2vw;
+    padding: 1%;
+    height: auto;
+    /* padding-top: 5%; */
+  }
+  .SelectionCardCross {
+    position: absolute;
+    right: 3%;
+    cursor: pointer;
+  }
+  .selectionCard {
+    position: absolute;
+    width: 50vw;
+    height: auto;
+    /* margin-left: -43%; */
+    padding: 2%;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4vw;
+    box-shadow: 2px 2px 10px -4px gray;
+    box-shadow: 2px 2px 10px -4px gray;
+    background: rgba(255, 255, 255);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+  }
+  .actionHead {
+    font-size: 3.1vw;
+    display: flex;
+    align-self: center;
+    justify-content: left;
+    text-align: center;
+    color: black;
+    font-weight: 500;
+  }
+  .actionElement {
+    font-size: 3vw;
+    display: flex;
+    align-self: center;
+    justify-content: left;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+  }
+  .actionElement:hover {
+    transition-duration: 0.4s;
+  }
+  .userLoader {
+    margin-left: -3% !important;
+  }
+  .usersContainer {
+    margin-top: -13%;
+  }
+}
+
+/* Overlay */
+.selectionOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  /* Start hidden */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+/* Show overlay */
+.selectionOverlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Modal/Card */
+.selectionCard {
+  scale: 0.85;
+  width: 80%;
+  max-width: 700px;
+  background-color: rgb(248, 248, 248);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(177, 177, 177);
+  box-sizing: border-box;
+  position: relative;
+
+  /* Start hidden with scale */
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
+
+/* Show modal with scale animation */
+.selectionOverlay.active .selectionCard {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Close Button */
+.SelectionCardCross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Section Head */
+.actionHead {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+/* Grid of action boxes */
+.practiceActionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Each action box */
+.actionBox {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgb(200, 200, 200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.actionBox:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon */
+.actionIcon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* Label */
+.actionLabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: black;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 430px) {
+  .selectionCard {
+    width: 90%;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .actionIcon {
+    font-size: 5rem;
+    margin-bottom: 8px;
+  }
+
+  /* Label */
+  .actionLabel {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: black;
+  }
+  .actionHead {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 2rem;
   }
 }

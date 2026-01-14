@@ -1,27 +1,32 @@
 .loaderContainer {
   position: absolute;
-  left: 60% !important;
-  top: 45vh !important;
+  left: 46.5% !important;
+  top: 20vh !important;
   justify-content: center;
   text-align: center;
   align-items: center;
 }
 .loaderText {
   font-size: 1.4vw;
-  color: rgb(49, 49, 195);
-  margin-left: -50%;
+  color: #333f6b;
+  margin-left: -65%;
+  margin-top: 25%;
+  /* color: rgb(0, 0, 255); */
 }
 
 @media screen and (max-width: 430px) {
   .loaderContainer {
-    left: 35% !important;
-    top: 40vh !important;
+    left: 11% !important;
+    top: 30vh !important;
     position: absolute;
     justify-content: center;
     text-align: center;
+    scale: 0.8 !important;
   }
   .loaderText {
-    font-size: 6vw;
+    font-size: 8vw;
+    margin-left: -90%;
+    margin-top: 33%;
   }
   .userLoader {
     margin-left: 7%;

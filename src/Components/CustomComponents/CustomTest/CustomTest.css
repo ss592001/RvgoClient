@@ -1,7 +1,8 @@
 .testContainer {
-  width: 75%;
+  width: 100%;
   height: 100vh;
-  margin-left: 25%;
+ 
+  /* margin-left: 20%; */
 }
 .testHeader {
   background-color: rgb(230, 230, 230);
@@ -13,8 +14,8 @@
   display: flex;
 }
 .testHeaderText {
-  color: rgb(126, 23, 28);
-  font-size: 1.8vw;
+  color: rgb(50, 50, 255);
+  font-size: 2vw;
 }
 .alert {
   height: 2.5vw;
@@ -23,7 +24,8 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: rgb(126, 23, 28);
+  /* background-color: rgb(126, 23, 28); */
+  background-color: rgb(50, 50, 255);
   color: white;
   border-radius: 50%;
   position: fixed;
@@ -39,12 +41,14 @@
   overflow: scroll;
 }
 .allTestHeader {
+  display: none;
   width: 100%;
   height: 7vh;
   padding: 1%;
   box-sizing: border-box;
-  background-color: rgb(254, 193, 196);
-  color: rgb(126, 23, 28);
+  background-color: rgb(207, 207, 255);
+  /* color: rgb(126, 23, 28); */
+  color: rgb(50, 50, 255);
 }
 .testElementsContainer {
   display: flex;
@@ -63,7 +67,8 @@
 }
 .testNameInfo {
   font-size: 1.5vw;
-  color: rgb(126, 23, 28);
+  /* color: rgb(126, 23, 28); */
+  color: rgb(50, 50, 255);
 }
 .testStatusContainer {
   display: flex;
@@ -95,7 +100,8 @@
   margin-top: 4%;
 }
 .noTestMessage {
-  color: rgb(126, 23, 28);
+  /* color: rgb(126, 23, 28); */
+  /* color:rgb(50, 50,255); */
   font-size: 1.4vw;
   border-radius: 0.7vw;
   padding: 1vw;
@@ -111,6 +117,7 @@
     width: 100%;
     height: 90vh;
     margin-left: 0%;
+     margin-top: 13%;
   }
   .testHeader {
     background-color: rgb(230, 230, 230);
@@ -124,7 +131,7 @@
     align-items: center;
   }
   .testHeaderText {
-    color: rgb(126, 23, 28);
+    color: gray;
     font-size: 6vw;
     font-weight: 600;
   }
@@ -179,7 +186,7 @@
   }
   .testNameInfo {
     font-size: 6vw;
-    color: rgb(126, 23, 28);
+    color: blue;
   }
   .testOtherInfo {
     font-size: 3vw;
@@ -215,7 +222,7 @@
     /* margin-top: 10%; */
   }
   .noTestMessage {
-    color: rgb(126, 23, 28);
+    color: gray;
     font-size: 1.4vw;
     border-radius: 0.7vw;
     padding: 1vw;

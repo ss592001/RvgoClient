@@ -11,6 +11,7 @@ import { useState } from "react";
 import emailjs, { send } from "emailjs-com";
 import { toast } from "react-toastify";
 import "./Footer.css";
+import { PostRoute } from "Components/Custom_hooks/Routes";
 import { useMediaQuery } from "../../../Custom_hooks/Custom";
 const Footer = () => {
   const isMobile = useMediaQuery("(max-width:430px)");
@@ -19,38 +20,34 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [gender, setGender] = useState("");
+  const [sending,setSending]=useState(false)
   const submit = () => {
     if (name === "" || contactNumber === "" || email === "" || message === "") {
       return toast.error("Error!! Please fillout the complete form .");
     }
-    // const to = "info@heliosprep.in";
-    const to = "info@heliosprep.in";
-    const subject = "New Enquery For Helios";
-
-    const serviceId = "service_xlhg6gu";
-    const templateId = "template_z8wvcsj";
-    const api = "-e3QTwnjEurEt2MLT";
-
-    emailjs
-      .send(
-        serviceId,
-        templateId,
-        { email, contactNumber, to, subject, message },
-        api
-      )
-      .then((response) => {
-        toast.success(
-          "Data submitted successfully. Our offical will contact you soon...."
-        );
-        setName("");
-        setContactNumber("");
-        setMessage("");
-        setEmail("");
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-        toast.error("Error !! Please try again.");
-      });
+   const bodyData = {
+     name: name,
+     email: email,
+     phone: contactNumber,
+     desc: message,
+   };
+   PostRoute(
+     "sendEmail",
+     () => {
+       setSending(true);
+     },
+     (res) => {
+       setSending(false);
+       setName("");
+       setEmail("");
+       setContactNumber("");
+       setMessage("");
+       toast.success(
+         "Data submitted successfully. Our offical will contact you soon...."
+       );
+     },
+     bodyData
+   );
   };
   return (
     <>
@@ -62,12 +59,7 @@ const Footer = () => {
           <div className="footer__columns mod--1">
             <div className="footer__col col--1">
               <a href="#" className="logo-link mod--footer w-inline-block">
-                <img
-                  src={Brandlogo}
-                  loading="eager"
-                  alt=""
-                  className="logo mod--fopter"
-                />
+                <div className="Brandtitle">RVGO</div>
               </a>
             </div>
             <div className="footer__col col--2">
@@ -84,10 +76,18 @@ const Footer = () => {
                 >
                   <div className="overflow-hidden">
                     <div className="overflow__anim">
-                      <div className="overflow__anim-txt mod--over mod--talk">
+                      <div
+                        className="overflow__anim-txt mod--over mod--talk"
+                        style={{ color: "gray" }}
+                      >
                         Let’s talk.
                       </div>
-                      <div className="overflow__anim-txt">Let’s talk.</div>
+                      <div
+                        className="overflow__anim-txt"
+                        style={{ color: "gray" }}
+                      >
+                        Let’s talk.
+                      </div>
                     </div>
                   </div>
                 </a>
@@ -282,12 +282,21 @@ const Footer = () => {
                           <div className="overflow__anim">
                             <div
                               className="overflow__anim-txt"
-                              style={{ width: !isMobile ? "40%" : "100%" }}
+                              style={{ width: !isMobile ? "100%" : "100%" }}
                             >
-                              For any query related to courses and digital
-                              platform contact us on info@heliosprep.in or
-                              support@heliosprep.in. You Can also fill out the
-                              contact us form.
+                              {isMobile ? (
+                                <>
+                                  For any query related to courses and digital
+                                  platform contact us on info@rvgoprep.com or
+                                  (+91) 8950608487 . You Can also fill out the
+                                  contact us form.
+                                </>
+                              ) : (
+                                <>
+                                  <div>- info@rvgoprep.com</div>
+                                  <div>- (+91)8950608487</div>
+                                </>
+                              )}
                               {isMobile && (
                                 // <div class="background">
                                 //   <div class="container">
@@ -379,17 +388,20 @@ const Footer = () => {
                                     </div>
                                   </div>
                                 </div>
-                                //   </div>
-                                // </div>
                               )}
                               {isMobile && (
                                 <div className="home__col col--2">
                                   <div className="hero__composition">
                                     <div className="hero__woman-wrap">
-                                      <div class="background">
+                                      {/* <div class="background">
                                         <div class="container">
                                           <div class="screen">
-                                            <div class="screen-header">
+                                            <div
+                                              class="screen-header"
+                                              style={{
+                                                backgroundColor: "#333f6b",
+                                              }}
+                                            >
                                               <div class="screen-header-left">
                                                 <div class="screen-header-button close"></div>
                                                 <div class="screen-header-button maximize"></div>
@@ -401,16 +413,24 @@ const Footer = () => {
                                                 <div class="screen-header-ellipsis"></div>
                                               </div>
                                             </div>
-                                            <div class="screen-body">
+                                            <div
+                                              class="screen-body"
+                                              style={{
+                                                backgroundColor: "#101734",
+                                                borderBottomLeftRadius: "1.5vw",
+                                                borderBottomRightRadius:
+                                                  "1.5vw",
+                                              }}
+                                            >
                                               <div class="screen-body-item left">
                                                 <div class="app-title">
                                                   <span
-                                                    style={{ color: "#860d1c" }}
+                                                    style={{ color: "white" }}
                                                   >
                                                     CONTACT
                                                   </span>
                                                   <span
-                                                    style={{ color: "#860d1c" }}
+                                                    style={{ color: "white" }}
                                                   >
                                                     US
                                                   </span>
@@ -473,13 +493,11 @@ const Footer = () => {
                                                     class="app-form-group buttons"
                                                     style={{ color: "#860d1c" }}
                                                   >
-                                                    {/* <button class="app-form-button">CANCEL</button> */}
+                                                    
                                                     <button
                                                       class="app-form-button"
                                                       onClick={submit}
-                                                      style={{
-                                                        color: "#860d1c",
-                                                      }}
+                                                      style={{ color: "white" }}
                                                     >
                                                       SEND
                                                     </button>
@@ -489,29 +507,121 @@ const Footer = () => {
                                             </div>
                                           </div>
                                         </div>
+                                      </div> */}
+                                      <div class="background">
+                                        <div class="container">
+                                          <div class="screen">
+                                            <div
+                                              class="screen-header"
+                                              style={{
+                                                backgroundColor: "#333f6b",
+                                              }}
+                                            >
+                                              <div class="screen-header-left">
+                                                <div class="screen-header-button close"></div>
+                                                <div class="screen-header-button maximize"></div>
+                                                <div class="screen-header-button minimize"></div>
+                                              </div>
+                                              <div class="screen-header-right">
+                                                <div class="screen-header-ellipsis"></div>
+                                                <div class="screen-header-ellipsis"></div>
+                                                <div class="screen-header-ellipsis"></div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="screen-body"
+                                              style={{
+                                                backgroundColor: "#101734",
+                                                borderBottomLeftRadius: "1.5vw",
+                                                borderBottomRightRadius:
+                                                  "1.5vw",
+                                              }}
+                                            >
+                                              <div class="screen-body-item left">
+                                                <div class="app-title">
+                                                  <span
+                                                    style={{ color: "white" }}
+                                                  >
+                                                    CONTACT
+                                                  </span>
+                                                  <span
+                                                    style={{ color: "white" }}
+                                                  >
+                                                    US
+                                                  </span>
+                                                </div>
+                                                <div class="app-contact">
+                                                  Be a part of our institute
+                                                </div>
+                                              </div>
+                                              <div class="screen-body-item">
+                                                <div class="app-form">
+                                                  <div class="app-form-group">
+                                                    <input
+                                                      class="app-form-control"
+                                                      placeholder="NAME"
+                                                      value={name}
+                                                      onChange={(ev) => {
+                                                        setName(
+                                                          ev.target.value
+                                                        );
+                                                      }}
+                                                    />
+                                                  </div>
+                                                  <div class="app-form-group">
+                                                    <input
+                                                      class="app-form-control"
+                                                      placeholder="EMAIL"
+                                                      value={email}
+                                                      onChange={(ev) => {
+                                                        setEmail(
+                                                          ev.target.value
+                                                        );
+                                                      }}
+                                                    />
+                                                  </div>
+                                                  <div class="app-form-group">
+                                                    <input
+                                                      class="app-form-control"
+                                                      placeholder="CONTACT NO"
+                                                      value={contactNumber}
+                                                      onChange={(ev) => {
+                                                        setContactNumber(
+                                                          ev.target.value
+                                                        );
+                                                      }}
+                                                    />
+                                                  </div>
+                                                  <div class="app-form-group message">
+                                                    <input
+                                                      class="app-form-control"
+                                                      placeholder="MESSAGE"
+                                                      value={message}
+                                                      onChange={(ev) => {
+                                                        setMessage(
+                                                          ev.target.value
+                                                        );
+                                                      }}
+                                                    />
+                                                  </div>
+                                                  <div
+                                                    class="app-form-group buttons"
+                                                    style={{ color: "#860d1c" }}
+                                                  >
+                                                    <button
+                                                      class="app-form-button"
+                                                      onClick={submit}
+                                                      style={{ color: "white" }}
+                                                    >
+                                                     {sending?'SENDING...':'SEND'}
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
-                                      {/* <div className="flaganimation_wrapper">
-                  
-                    <FlagAnimation key={0} flagUrls={flagUrls} index={0} />
-                  </div>
-                  <img
-                    ref={crystalRef}
-                    src={crystal_hero}
-                    loading="eager"
-                    alt="Crystal"
-                    className="hero__crystal"
-                  />
-                  <div ref={stickerWrapRef} className="hero__sticker-wrap">
-                    <a href="#" className="hero__sticker w-inline-block">
-                      <img
-                        src={bg_sticker}
-                        loading="eager"
-                        alt="Sticker"
-                        className="hero__sticker-bg"
-                      />
-                      <div>NEW!</div>
-                    </a>
-                  </div> */}
                                     </div>
                                   </div>
                                 </div>
@@ -528,7 +638,7 @@ const Footer = () => {
                         <div className="overflow-hidden">
                           <div className="overflow__anim">
                             <div className="overflow__anim-txt mod--over">
-                              1. support@heliosprep.in
+                              1. support@rvgo.in
                             </div>
                           </div>
                         </div>
@@ -561,7 +671,7 @@ const Footer = () => {
                       className="footer__copyright-logo"
                     />
                     <div>
-                      2022 Halo Lab <br />© All rights reserved
+                      2025 rvgo <br />© All rights reserved
                     </div>
                   </a>
                 </div>
@@ -613,105 +723,6 @@ const Footer = () => {
         <div className="footer__follow-wrap"></div>
         <img src={bgblur2} loading="eager" alt="" className="footer__bg-blur" />
       </footer>
-      {/* <footer class="footer">
-        <div class="footer__parralax">
-          <div class="footer__parralax-trees"></div>
-          <div class="footer__parralax-moto"></div>
-          <div class="footer__parralax-secondplan"></div>
-          <div class="footer__parralax-premierplan"></div>
-          <div class="footer__parralax-voiture"></div>
-        </div>
-        <div class="container">
-          <div class="footer__columns">
-            <div class="footer__col">
-              <h3 class="footer__col-title">
-                <i data-feather="shopping-bag"></i> <span>La boutique</span>
-              </h3>
-              <nav class="footer__nav">
-                <ul class="footer__nav-list">
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      Mentions légales
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      Politique de confidentialité
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      CGV
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      Livraisons et retours
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      Règlement concours
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="footer__col">
-              <h3 class="footer__col-title">
-                <i data-feather="share-2"></i> <span>Nos réseaux</span>
-              </h3>
-              <nav class="footer__nav">
-                <ul class="footer__nav-list">
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      <i data-feather="youtube"></i>
-                      <span>Youtube</span>
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      <i data-feather="facebook"></i>
-                      <span>Facebook</span>
-                    </a>
-                  </li>
-                  <li class="footer__nav-item">
-                    <a href="" class="footer__nav-link">
-                      <i data-feather="instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="footer__col">
-              <h3 class="footer__col-title">
-                <i data-feather="send"></i> <span>Contact</span>
-              </h3>
-              <nav class="footer__nav">
-                <ul class="footer__nav-list">
-                  <li class="footer__nav-item">
-                    <a
-                      href="mailto:contact.laboiserie@gmail.com"
-                      class="footer__nav-link"
-                    >
-                      contact.laboiserie@gmail.com
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="footer__copyrights">
-            <p>
-              Réalisé par{" "}
-              <a href="https://twitter.com/silvereledev" target="_blank">
-                @SilvereLeDev
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer> */}
     </>
   );
 };

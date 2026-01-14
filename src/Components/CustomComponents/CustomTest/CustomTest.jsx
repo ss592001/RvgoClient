@@ -22,7 +22,6 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
   const [loader, setLoader] = useState(false);
   const isMobile = useMediaQuery("(max-width:430px)");
   const auth = useSelector((state) => state.user.auth);
-
   const handleTestFilter = (active) => {
     setIsActive(active);
     const updatedTests = tests.filter(
@@ -106,13 +105,15 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
                   setCheckingData();
                   setIsChecking(false);
                 }}
-                src="https://img.icons8.com/ios-filled/50/circled-left-2.png"
+                src="https://img.icons8.com/sf-black-filled/64/333f6b/long-arrow-left.png"
                 alt="circled-left-2"
               />
             )}
-            {title}
+            <span style={{ color: "#333F6B" }}>{title}</span>
           </div>
-          <div className="alert">{"1"}</div>
+          <div className="alert" style={{ backgroundColor: "#333F6B" }}>
+            {"1"}
+          </div>
         </div>
         <div className="buttonsContainer">
           <CustomButton
@@ -124,8 +125,8 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
                     width: isMobile ? "auto" : "20%",
                     margin: "1%",
                     backgroundColor: "transparent",
-                    border: "1px solid rgb(126, 23, 28)",
-                    color: "rgb(126, 23, 28)",
+                    border: "1px solid grey",
+                    color: "grey",
                   }
             }
             isDissabled={false}
@@ -142,8 +143,8 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
                     width: isMobile ? "auto" : "20%",
                     margin: "1%",
                     backgroundColor: "transparent",
-                    border: "1px solid rgb(126, 23, 28)",
-                    color: "rgb(126, 23, 28)",
+                    border: "1px solid grey",
+                    color: "grey",
                   }
             }
             isDissabled={false}
@@ -159,7 +160,9 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
               return (
                 <div className="testElementsContainer">
                   <div className="elementContainer">
-                    <div className="testNameInfo">{test.testName}</div>
+                    <div className="testNameInfo" style={{ color: "#333F6B" }}>
+                      {test.testName}
+                    </div>
                     <div className="testOtherInfo">{test.testDescription}</div>
                     <div className="testStatusContainer">
                       <div className="statusItemContainer">
@@ -201,7 +204,7 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
                               />
                             </>
                           ) : (
-                            <>Result</>
+                            <>Analyse</>
                           )
                         }
                         style={{
@@ -222,7 +225,7 @@ const CustomTest = ({ title, tests, setIsChecking, setCheckingData }) => {
                         <>
                           {" "}
                           <CustomButton
-                            text={!isMobile?"Not Attempted":"Pending"}
+                            text={!isMobile ? "Not Attempted" : "Pending"}
                             style={{
                               width: "100%",
                               margin: "1%",

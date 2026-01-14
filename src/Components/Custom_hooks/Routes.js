@@ -1,7 +1,5 @@
-export const url = `http://srv749425.hstgr.cloud:3008`;
+export const url = `https://srv749425.hstgr.cloud:3008`;
 // export const url = `http://localhost:3008`
-
-// export const url = `https://newhelios.onrender.com`
 
 
 export const GetRoute = async (endPoint, beforeExecutionFunc, afterExecutionFunc) => {

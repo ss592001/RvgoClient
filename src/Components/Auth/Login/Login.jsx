@@ -47,15 +47,21 @@ const Login = () => {
         if (data.auth === false) {
           setError("Invalid email or password.");
         } else {
-          dispatch(setAuth(data));
           if (data.type === "user") {
-            navigate("/user/dashboard");
+            if (data.data.isApproved === false) {
+              setError("Account not approved by the Admin.");
+            } else {
+              dispatch(setAuth(data));
+              
+              navigate("/user/dashboard");
+            }
           } else {
+            dispatch(setAuth(data));
             navigate("/admin/dashboard");
           }
         }
         setLoader(false);
-        console.log(data);
+        console.log("data", data);
       }
     );
   };

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Brandlogo from "../../assets/images/Helios_LOGO.png";
-import bgblur1 from "../../assets/images/n.png";
+import Brandlogo from "../../assets/images/favicon.png";
 import gsap from "gsap";
-
+import { useMediaQuery } from "Components/Custom_hooks/Custom";
 const Loader = () => {
+  const isMobile = useMediaQuery("(max-width:430px)");
   useEffect(() => {
     gsap.to(".preloader__img-logo ", {
       transform:
@@ -21,7 +21,7 @@ const Loader = () => {
     <div className="modals">
       <div style={{ display: "flex" }} className="preloader">
         <div className="preloader__content">
-          <div className="overflow-hidden">
+          <div>
             <div
               className="preloader__img-logo "
               style={{
@@ -35,8 +35,18 @@ const Loader = () => {
                   "translate3d(0, 200%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)",
               }}
             >
-              <img src={Brandlogo} loading="eager" alt="" className="" />
-              <h2 className="Brandtitle ">HELIOS</h2>
+              <img
+                src={Brandlogo}
+                loading="eager"
+                alt=""
+                className=""
+                style={{
+                  scale: !isMobile ? "1.5" : "1",
+                  marginLeft: !isMobile ? "20%" : "1%",
+                }}
+              />
+              <h1 className="Brandtitle">RVGO – Reach the Victory</h1>
+              {/* <h3 className="Brandtitle brandDiscription">Tailoring and Illuminating Futures</h3> */}
             </div>
           </div>
           <div className="overflow-hidden"></div>

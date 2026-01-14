@@ -2,19 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="RV Go is an innovative online test preparation platform dedicated to providing affordable, customized, and effective learning solutions for students preparing for the SAT, ACT, AP’s, AMC, IB Curriculum, GCSE (AQA & Edexcel Board), KS 2 to KS 15, ISEE, UK SATs, IGCSE, CBSE, ICSE, State Board exams. With a focus on personalized one-on-one tutoring, RV Go ensures that each student receives tailored guidance that aligns with their individual learning style, strengths, and goals."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <!-- <link href="../src/output.css" rel="stylesheet" /> -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <!--
@@ -26,8 +26,28 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Helios</title>
+    <title>RVGOPREP</title>
     <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [["$$", "$$"]],
+        },
+        processEscapes: true,
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

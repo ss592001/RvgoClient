@@ -1,0 +1,133 @@
+/* .popup {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 9999999;
+  box-shadow: 2px 2px 10px -3px gray;
+  z-index: 2000000;
+  background-color: white;
+}
+.popupdialogue {
+  height: auto;
+  width: 60vw;
+  background-color: white;
+  border-radius: 1vw;
+  padding: 1%;
+  background-color: rgb(248, 248, 248);
+  border: 1px solid rgb(177, 177, 177);
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 430px) {
+  .popup {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 999999999999;
+    box-shadow: 2px 2px 10px -3px gray;
+  }
+  .popupdialogue {
+    height: auto;
+    width: 90%;
+    background-color: white;
+    border-radius: 2vw;
+    padding: 2%;
+    background-color: rgb(248, 248, 248);
+    box-sizing: border-box;
+    border: 1px solid rgb(177, 177, 177);
+  }
+} */
+
+/* Full-screen backdrop with blur */
+
+/* Full-screen backdrop with blur */
+.popup {
+  position: fixed; /* fixed so it covers the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards; /* fade in backdrop */
+}
+
+/* Modal content box */
+.popupdialogue {
+  scale: 0.9;
+  width: 60vw;
+  max-width: 700px;
+  background-color: rgb(248, 248, 248);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(177, 177, 177);
+  box-sizing: border-box;
+  position: relative;
+  transform: scale(0.8);
+  opacity: 0;
+  animation: scaleIn 0.3s forwards; /* scale + fade in modal */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 430px) {
+  .popupdialogue {
+    scale: 1;
+    width: 90%;
+    border-radius: 8px;
+    padding: 16px;
+  }
+}
+
+/* Keyframes for fade in */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for scale + fade in */
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Optional: add fadeOut animation (if you remove popup by adding a class 'closing') */
+.popup.closing {
+  animation: fadeOut 0.3s forwards;
+}
+
+.popupdialogue.closing {
+  animation: scaleOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleOut {
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}

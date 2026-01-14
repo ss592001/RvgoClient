@@ -1,8 +1,9 @@
 .Sidecontainer {
-  background-color: rgb(126, 23, 28);
+  background-color: rgb(61, 61, 253);
+  background-color: #333f6b;
   height: 100vh;
-  width: 25%;
-  padding: 2vw;
+  width: 20%;
+  padding: 1%;
   box-sizing: border-box;
   position: absolute;
 }
@@ -16,11 +17,17 @@
 }
 .sidebarHeader {
   color: white;
-  font-size: 1.8vw;
+  font-size: 2.9vw;
   font-weight: 500;
+  /* display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .route {
   display: flex;
+  gap: 2%;
   height: auto;
   margin-top: 0vh;
   padding: 2%;
@@ -34,31 +41,33 @@
   transition-duration: 0.3s;
 }
 .routeIcon {
-  height: 2vw;
-  width: 2vw;
+  height: 1.5vw;
+  width: 1.5vw;
 }
 .routeIconMock {
-  height: 3vw;
-  width: 3vw;
+  height: 2.2vw;
+  width: 2.1vw;
+  margin-left: -1%;
 }
 .routeName {
-  color: rgb(255, 170, 174);
-  font-size: 1.6vw;
-  margin-top: 1%;
-  margin-left: 3%;
+  color: rgb(163, 163, 254);
+  font-size: 1.2vw;
+}
+.routeNameMock {
+  color: rgb(163, 163, 254);
+  font-size: 1.2vw;
+  margin-left: -1.2%;
 }
 .subTestName {
-  color: rgb(255, 170, 174);
-  font-size: 1.2vw;
+  color: rgb(163, 163, 254);
+  font-size: 1vw;
   margin-left: 3%;
   width: 100%;
 }
 .subRouteName {
-  color: rgb(255, 170, 174);
-  font-size: 1.2vw;
-  margin-left: 3%;
+  color: rgb(163, 163, 254);
+  font-size: 1vw;
   width: 100%;
-  /* display: flex; */
   align-items: center;
   justify-content: flex-start;
   text-align: center;
@@ -67,9 +76,8 @@
   margin-left: 10%;
 }
 .nestedRoute {
-  color: rgb(255, 170, 174);
+  color: rgb(163, 163, 254);
   font-size: 1vw;
-  margin-left: 3%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -77,23 +85,21 @@
   text-align: center;
 }
 .logout {
-  margin-top: 0%;
   margin-left: -1%;
-}
-.logoutText {
-  margin-top: -0.2%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 2%;
 }
 
 @media screen and (max-width: 430px) {
-  .menuIconContainer {
-  }
-  .menuIcon {
-  }
+
   .Sidecontainer {
-    background-color: rgb(126, 23, 28, 0.9);
+    background-color: rgb(12, 12, 242);
+    background-color: #333f6b;
     backdrop-filter: blur(5px);
     height: 100vh;
-    width: 90%;
+    width: 100%;
     z-index: 9999999999;
     padding: 2vw;
     box-sizing: border-box;
@@ -120,7 +126,7 @@
   }
   .sidebarHeader {
     color: white;
-    font-size: 5vw;
+    font-size: 13vw;
     font-weight: 500;
   }
   .route {
@@ -148,19 +154,19 @@
     display: none;
   }
   .routeName {
-    color: rgb(255, 170, 174);
+    color: white;
     font-size: 5vw;
     margin-top: 1%;
     margin-left: 3%;
   }
   .subTestName {
-    color: rgb(255, 170, 174);
+    color: white;
     font-size: 4vw;
     margin-left: 3%;
     width: 100%;
   }
   .subRouteName {
-    color: rgb(255, 170, 174);
+    color: white;
     font-size: 4vw;
     margin-left: 3%;
     width: 100%;
@@ -173,7 +179,7 @@
     margin-left: 10%;
   }
   .nestedRoute {
-    color: rgb(255, 170, 174);
+    color: white;
     font-size: 4vw;
     margin-left: 3%;
     margin-top: 3%;
@@ -184,7 +190,9 @@
     text-align: center;
   }
   .logout {
-    margin-top: 0%;
+    /* position: fixed;
+    bottom: 1; */
+    width: 100%;
   }
   .logoutText {
     border: 2px solid white;
@@ -193,7 +201,7 @@
     display: flex;
     align-items: center;
     background-color: white;
-    color: rgb(126, 23, 28);
+    color: #333f6b;
     font-size: 6vw;
     font-weight: 600;
     width: 100%;

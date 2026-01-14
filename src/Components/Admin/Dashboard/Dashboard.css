@@ -3,56 +3,91 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 .dashboardContainer {
-  margin-left: 25%;
+  overflow: scroll;
+  /* margin-left: 20%; */
   padding: 2.5vw;
+  height: 100vh;
+}
+.profileContainer1 {
+  display: flex;
+  gap: 2%;
+  height: 50vh;
+  padding: 1%;
+  box-sizing: border-box;
+  border-radius: 0.7vw;
+  /* background-color: rgb(128, 128, 128); */
+  background-image: url(https://cdn.wallpapersafari.com/41/35/NECIm3.jpg);
 }
 .profileContainer {
   display: flex;
   gap: 2%;
-  align-items: center;
+  height: 50vh;
   padding: 1%;
   box-sizing: border-box;
   border-radius: 0.7vw;
-  box-shadow: 2px 2px 10px -6px black;
+
+  /* Background image fixes */
+  background-image: url('https://wallpaperaccess.com/full/5991049.jpg');
+  background-size: cover;       /* Image will fully cover the container */
+  background-position: center;  /* Ensures main subject stays centered */
+  background-repeat: no-repeat; /* Prevents tiling */
 }
+
 .ProfileIcon {
   height: 8vw;
   width: 8vw;
-  background-color: rgb(126, 23, 28);
-  color: white;
+  /* background-color: rgb(126, 23, 28); */
+  background-color: white;
+  color: rgb(61, 61, 253);
+  color: #333f6b;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 50%;
   font-size: 4vw;
+  font-weight: bolder;
   /* box-shadow: 2px 2px 14px -2px black; */
+}
+.adminText1 {
+  font-size: 1.5vw;
+  color: white;
+}
+.adminHeader1 {
+  font-size: 2.4vw;
+  font-weight: bold;
+  color: white;
 }
 .adminText {
   font-size: 1.5vw;
+  color: #333F6B;
 }
 .adminHeader {
   font-size: 2.4vw;
   font-weight: bold;
-  color: rgb(126, 23, 28);
+  color: #333F6B;
 }
 .mainAnalysisContainer {
   display: flex;
   gap: 5%;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 .analysisContainer {
+  /* position: fixed; */
   /* height: 40vh; */
-  height: auto;
-  width: 50%;
-  box-shadow: 2px 2px 12px -8px black;
+  height: 40vh;
+  width: 45%;
+  box-shadow: 2px 2px 12px -4px black;
   border-radius: 0.7vw;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(126, 23, 28);
+  background-color: rgb(61, 61, 253);
+  background-color: #333f6b;
   overflow: hidden;
+  margin-top: -22%;
+  margin-left: 1.7%;
 }
 .analysisIcon {
   height: 5vw;
@@ -73,14 +108,83 @@
 }
 
 .boldText {
-  font-size: 1.4vw;
+  font-size: 2vw;
   color: white;
   font-weight: 600;
   width: 100%;
-  color: rgb(126, 23, 28);
+  color: rgb(50, 50, 255);
   /* background-color: rgb(126, 23, 28); */
   padding: 1%;
+  margin-bottom: -8%;
 }
+.featuresTag {
+  background-color: rgb(230, 230, 230);
+  border-radius: 2vw;
+  padding: 1.5%;
+}
+.adminsHeader {
+  font-size: 2vw;
+  color: rgb(108, 108, 108);
+  font-weight: 700;
+  margin-top: 2%;
+  display: flex;
+  gap: 2%;
+  align-items: center;
+}
+.adminSelectionCard {
+  position: absolute;
+  width: 17vw;
+  height: auto !important;
+  margin-left: -15%;
+  margin-top: -9% !important;
+  padding: 0.5%;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.4vw;
+  box-shadow: 2px 2px 10px -4px gray;
+}
+.featuresTagAssignerAdmin {
+  display: flex;
+  background-color: rgb(230, 230, 230);
+  border-radius: 1vw;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 2%;
+  box-sizing: border-box;
+  font-size: 1vw;
+  margin-left: 1%;
+  font-size: 1vw;
+  min-width: 30%;
+  min-height: 100%;
+}
+.liquid-glass-container {
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent white */
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  padding: 2rem;
+  color: white;
+  font-size: 1.2rem;
+
+  /* Optional smooth gradient */
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+
+  /* For good contrast on dark backgrounds */
+  backdrop-filter: blur(20px);
+}
+
+.featureDelete {
+  font-size: 2vw;
+}
+
 @media screen and (max-width: 430px) {
   * {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -90,20 +194,23 @@
   .dashboardContainer {
     margin-left: 0%;
     padding: 2.5vw;
+    height: 80vh;
+    margin-top: 13%;
   }
   .profileContainer {
     display: flex;
-    gap: 2%;
-    align-items: center;
-    padding: 1%;
+    /* gap: 2%; */
+    height: 8vh;
+    /* text-align: center; */
+    padding: 2%;
     box-sizing: border-box;
-    border-radius: 2vw;
-    box-shadow: 2px 2px 10px -6px black;
+    border-radius: 3vw;
+    background-color: rgb(189, 189, 189);
   }
   .ProfileIcon {
     height: 12vw;
     width: 12vw;
-    background-color: rgb(126, 23, 28);
+    background-color: #333f6b;
     color: white;
     display: flex;
     justify-content: center;
@@ -111,33 +218,35 @@
     text-align: center;
     border-radius: 50%;
     font-size: 6vw;
+    /* margin-top: -128%; */
   }
   .adminText {
     font-size: 4vw;
+    margin-top: 0%;
   }
   .adminHeader {
-    font-size: 6vw;
+    font-size: 5vw;
     font-weight: bold;
-    color: rgb(126, 23, 28);
+    color: #333f6b;
+    /* margin-top: -165%; */
   }
-
   .mainAnalysisContainer {
     display: block;
-    margin-top: 20%;
+    /* margin-top: -120%; */
   }
   .analysisContainer {
     height: auto;
-
-    width: 100%;
+    width: 96.5%;
     box-shadow: 2px 2px 12px -8px black;
     border-radius: 2vw;
-
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: rgb(126, 23, 28);
+    background-color: #333f6b;
+    color: white;
     overflow: hidden;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    /* margin-bottom: 10%; */
   }
   .analysisIcon {
     height: 15vw;
@@ -145,19 +254,71 @@
     margin-bottom: 5%;
     margin-top: 5%;
   }
-
   .analysisElement {
     font-size: 6vw;
     color: white;
     font-weight: bold;
   }
-
   .boldText {
     font-size: 6vw;
     color: white;
     font-weight: 600;
     width: 100%;
-    background-color: rgb(126, 23, 28);
+    /* background-color: #333f6b; */
     padding: 2%;
+  }
+  .adminsHeader {
+    font-size: 7vw;
+    color: rgb(108, 108, 108);
+    font-weight: 700;
+    margin-top: 2%;
+    display: flex;
+    gap: 2%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+  }
+  .adminSelectionCard {
+    position: absolute;
+    width: 30vw;
+    height: 5vh;
+    margin-left: -30%;
+    margin-top: -5%;
+    padding: 0.5%;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    font-size: 2vw;
+    border-radius: 2vw;
+    box-shadow: 2px 2px 10px -4px gray;
+  }
+  .chart {
+    margin-top: 5%;
+  }
+  .headerDashboard {
+    /* margin-top: -90%; */
+  }
+  .headerDashboardId {
+    margin-top: 0%;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  .adminsPlacer {
+    margin-top: 5%;
+  }
+  .featuresTagAssignerAdmin {
+    display: flex;
+    background-color: rgb(230, 230, 230);
+    border-radius: 1vw;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 2%;
+    box-sizing: border-box;
+    margin-left: 1%;
+    font-size: 2vw !important;
+    min-width: 10% !important;
+    min-height: 100%;
+  }
+  .featureDelete {
+    font-size: 3vw;
   }
 }

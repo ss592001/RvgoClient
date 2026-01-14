@@ -59,7 +59,11 @@ const Intro = () => {
   });
   return (
     <>
-      <section className="section mod--care" id="About">
+      <section
+        className="section mod--care"
+        id="About"
+        // style={{ backgroundColor: "#333f6b" }}
+      >
         <div
           data-w-id="904e079f-3195-8349-049c-301b453106cc"
           className="content"
@@ -67,24 +71,19 @@ const Intro = () => {
           <div
             className="care__columns"
             style={{
-              backgroundColor: "rgb(126, 23, 28,0.3)",
-              borderRadius: ".7vw",
+              backgroundColor: "#333f6b",
+              borderRadius: "1vw",
+              boxShadow: "2px 2px 10px 5px gray",
             }}
           >
-            <div className="care__col col--1" style={{ opacity: 1 }}>
-              <div className="care__heading-wrap" style={{ opacity: 1 }}>
-                <img
-                  src={ico_star}
-                  loading="lazy"
-                  style={{
-                    transform:
-                      "translate3d(0px, 0rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(90deg) skew(0deg, 0deg)",
-                    transformStyle: "preserve-3d",
-                    opacity: "0",
-                  }}
-                  alt=""
-                  className="care__heading-star"
-                />
+            <div
+              className="care__col col--1"
+              style={{ opacity: 1, color: "white" }}
+            >
+              <div
+                className="care__heading-wrap"
+                style={{ opacity: 1, color: "white" }}
+              >
                 <h3 className="heading mod--margin-0">
                   <span className="heading__span">
                     <strong
@@ -95,35 +94,66 @@ const Intro = () => {
                       }}
                       className="heading__span-strong"
                     >
-                      What we do?
+                      What we do and our experience-
                     </strong>
                   </span>{" "}
-                  {/* <span className="heading__span">
-                                        <strong
-                                            style={{
-                                                transform:
-                                                    "translate3d(0px, 5rem, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)",
-                                                transformStyle: "preserve-3d"
-                                            }}
-                                            className="heading__span-strong"
-                                        >
-                                            the right body care.
-                                        </strong>
-                                    </span> */}
                 </h3>
               </div>
               <br />
               <p className="ani-text">
-                Over the last 4 years, Helios has emerged as the largest online
-                test prep company in India offering exclusive one-on-one online
-                prep for undergraduate studies abroad. Helios offers highly
-                customised and personalised prep programs delivered as live
-                one-on-one video calls. In order to ensure the most premium and
-                personalised services, we keep the number of our clients to a
-                minimum.
+                RV Go is an innovative online test preparation platform
+                dedicated to providing affordable, customized, and effective
+                learning solutions for students preparing for the SAT, ACT,
+                AP’s, AMC, IB Curriculum, GCSE (AQA & Edexcel Board), KS 2 to KS
+                15, ISEE, UK SATs, IGCSE, CBSE, ICSE, State Board exams. With a
+                focus on personalized one-on-one tutoring, RV Go ensures that
+                each student receives tailored guidance that aligns with their
+                individual learning style, strengths, and goals.
+                <br />
+                At RV Go, we believe that every student has the potential to
+                succeed, and we make that success attainable by offering highly
+                flexible and interactive tutoring sessions. Whether students are
+                aiming for top-tier universities abroad or striving for academic
+                excellence in their home country, our mission is to guide them
+                every step of the way.
+                <br />
+                <br />• Personalized one-on-one tutoring.
+                <br />
+                • Live video calls with expert tutors to ensure direct
+                engagement and real-time feedback.
+                <br />
+                • Comprehensive study materials, including practice tests,
+                assignments, and mock exams.
+                <br />
+                • Affordable pricing without compromising on the quality of
+                service.
+                <br />
+                • Customized lesson plans that are specifically designed to
+                address the unique needs of each student.
+                <br />
+                • Dedicated prep manager to provide ongoing support and monitor
+                progress.
+                <br />
+                • Interactive online classroom sessions, ensuring students have
+                access to group discussions and peer learning.
+                <br />
+                • Progress tracking through periodic reviews, sectional tests,
+                and mock exams to ensure measurable improvement.
+                <br />
+                <br />
+                <br />
+                At RV Go, our goal is simple: to make learning accessible,
+                effective, and affordable, while ensuring each student reaches
+                their highest potential. With a combination of personalized
+                tutoring and a proven test prep strategy, RV Go is the perfect
+                partner for students aiming for success in their standardized
+                exams.
               </p>
             </div>
-            <div className="care__col col--2" style={{ opacity: 1 }}>
+            {/* <div
+              className="care__col col--2"
+              style={{ opacity: 1, color: "white" }}
+            >
               <div
                 data-delay={4000}
                 data-animation="outin"
@@ -182,10 +212,13 @@ const Intro = () => {
                           className="care__p active"
                           aria-hidden="true"
                         >
-                          Salt from the sea normalizes the activity of the
-                          sebaceous glands, which helps to get rid of the oily.
-                          Slow down, take a moment, and allow the restorative
-                          effects of Fensea help create a stronger you.
+                          At RV Go, we believe that every student has the
+                          potential to succeed, and we make that success
+                          attainable by offering highly flexible and interactive
+                          tutoring sessions. Whether students are aiming for
+                          top-tier universities abroad or striving for academic
+                          excellence in their home country, our mission is to
+                          guide them every step of the way.
                         </p>
                       </div>
                       <div
@@ -258,10 +291,13 @@ const Intro = () => {
                           aria-hidden="true"
                           style={{ top: "10rem" }}
                         >
-                          The blue color of this Iranian salt comes from the
-                          potassium ore called sylvinite. With only a few tons
-                          extracted each year, Persian blue salt is one of the
-                          rarest in the world.
+                          At RV Go, we believe that every student has the
+                          potential to succeed, and we make that success
+                          attainable by offering highly flexible and interactive
+                          tutoring sessions. Whether students are aiming for
+                          top-tier universities abroad or striving for academic
+                          excellence in their home country, our mission is to
+                          guide them every step of the way.
                         </p>
                       </div>
                       <div
@@ -308,26 +344,29 @@ const Intro = () => {
                       zIndex: 2,
                     }}
                   >
-                    <div className="care__slider-content">
-                      <div className="overflow-hidden">
-                        <h4
+                    <div
+                      className="care__slider-content"
+                      style={{ width: "100%" }}
+                    >
+                      <div className="overflow-hidden ani-text">
+                        <h2
                           data-anim="elem"
-                          className="care__slide-title"
-                          style={{ top: "5rem" }}
+                          className="care__slide-title active "
+                          style={{ top: "5rem", fontSize: "2vw" }}
                         >
                           The current spectrum of offering includes,
-                        </h4>
+                        </h2>
                       </div>
                       <div className="overflow-hidden ani-text">
                         <p
                           data-anim="elem"
                           className="care__p"
-                          style={{ top: "0rem" }}
+                          // style={{ top: "0rem" }}
                         ></p>
-                        <div style={{ marginBottom: "10px" }}>
-                          SAT ACT AP Calculus AB & BC GCSE IGCSE IBDP AAHL
-                        </div>
                         <ul className="offersList ">
+                          <li>
+                            • SAT ACT AP Calculus AB & BC GCSE IGCSE IBDP AAHL
+                          </li>
                           <li>• 25 to 35 hours of live one-on-one classes.</li>
                           <li>• 10 to 15 hours of group classes.</li>
                           <li>
@@ -361,7 +400,7 @@ const Intro = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

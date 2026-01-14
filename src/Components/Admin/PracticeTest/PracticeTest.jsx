@@ -29,7 +29,7 @@ const PracticeTest = () => {
       (data) => {
         const practiceTests = handleFilterTests(data);
         setTests(practiceTests);
-        console.log(data);
+        console.log(practiceTests);
         setLoader(false);
       }
     );
@@ -38,7 +38,7 @@ const PracticeTest = () => {
     <div>
       {loader ? (
         <div className="loaderContainer">
-         <CustomDataLoader/>
+          <CustomDataLoader />
           <div className="loaderText">Loading Uploaded Tests...</div>
         </div>
       ) : (

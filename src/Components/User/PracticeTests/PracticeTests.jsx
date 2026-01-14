@@ -21,6 +21,7 @@ const PracticeTests = () => {
   const filter = useMemo(() => {
     return location.state?.filter || {};
   }, [location.state?.filter]);
+  
   useEffect(() => {
     GetRoute(
       `refreshUser/${auth?.data._id}`,

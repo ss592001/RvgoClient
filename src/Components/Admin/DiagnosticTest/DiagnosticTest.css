@@ -1,6 +1,7 @@
 .loaderContainer {
-  left: 55%;
+  left: 0%;
   top: 40vh;
+  margin-left: -4%;
   position: absolute;
   justify-content: center;
   text-align: center;

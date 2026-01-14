@@ -1,6 +1,7 @@
 // import 'rsuite/dist/rsuite.min.css';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Provider, useSelector } from 'react-redux';
 import { useMediaQuery } from './Components/Custom_hooks/Custom';
 import { PersistGate } from 'redux-persist/integration/react'
@@ -26,9 +27,12 @@ import { ToastContainer } from 'react-toastify';
 import './output.css'
 import DiagnosticTest from 'Components/Admin/DiagnosticTest/DiagnosticTest';
 import DiagnosticTests from 'Components/User/DiagnosticTests/DiagnosticTests';
+import QuestionDatabase from 'Components/Admin/uploadTests/QuestionDatabase';
+import TestAnalysis from 'Components/User/TestAnalysis/TestAnalysis';
+import AnalysisCharts from 'Components/User/TestAnalysis/AnalysisCharts';
+import AnalysisData from 'Components/User/TestAnalysis/AnalysisData';
 function App() {
   const isMobile = useMediaQuery('(max-width:412px)');
-
   return <>
     <ToastContainer
       position="top-right"
@@ -55,14 +59,17 @@ function App() {
               <Route path='/user/dashboard' element={<Dashboard />} />
               <Route path='/test/practice' element={<PracticeTests />} />
               <Route path='/test/mock' element={<MockTests />} />
-              <Route path='/test/diagnostic' element={<DiagnosticTests/>} />
-
+              <Route path='/test/diagnostic' element={<DiagnosticTests />} />
+              <Route path='/user/tests/analysis' element={<TestAnalysis />} />
+              <Route path='/user/tests/analysis/charts' element={<AnalysisCharts />} />
+              <Route path='/user/tests/analysis/data' element={<AnalysisData />} />
               <Route path='/admin/dashboard' element={<AdminDashboard />} />
-              <Route path='/admin/test/upload' element={<UploadTests />} />
               <Route path='/admin/test/practice' element={<PracticeTest />} />
               <Route path='/admin/test/mock' element={<Mock />} />
-              <Route path='/admin/test/diagnostic' element={<DiagnosticTest/>} />
+              <Route path='/admin/test/diagnostic' element={<DiagnosticTest />} />
               <Route path='/admin/access/users' element={<Users />} />
+              <Route path='/admin/access/questions/database' element={<QuestionDatabase />} />
+              <Route path='/admin/test/upload' element={<UploadTests />} />
 
             </Route>
             <Route path='/test/platform' element={<CustomTestPlatform />} />

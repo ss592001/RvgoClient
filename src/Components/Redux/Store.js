@@ -11,7 +11,10 @@ const initialState = {
   auth: null,
   timeTaken: '',
   startTime: '',
-  testOtherDetails: null
+  testOtherDetails: null,
+  currentQuestionDb: [],
+  tester:'user'
+
 };
 
 const userSlice = createSlice({
@@ -39,10 +42,23 @@ const userSlice = createSlice({
     setTestOtherDetails: (state, action) => {
       state.testOtherDetails = action.payload;
     },
+    setCurrentQuestionDb: (state, action) => {
+      state.currentQuestionDb = action.payload;
+
+    },
+    addToCurrentQuestionDb: (state, action) => {
+      if (!Array.isArray(state.currentQuestionDb)) {
+        state.currentQuestionDb = [];
+      }
+      state.currentQuestionDb.push(action.payload);
+    },
+    setTester: (state, action) => {
+      state.tester = action.payload;
+    },
   },
 });
 
-export const { setTab, setActiveTest, setAnswers, setAuth, setTimeTaken, setTestStartTIme, setTestOtherDetails } = userSlice.actions;
+export const { setTab, setActiveTest, setAnswers, setTester, setAuth, setTimeTaken, addToCurrentQuestionDb, setTestStartTIme, setTestOtherDetails, setCurrentQuestionDb } = userSlice.actions;
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Description = () => {
   const location = useLocation();
-  const { test } = location.state || {};
+  const {test} = location.state || {};
   const [isTestPrepared, setIsTestPrepared] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,11 +21,11 @@ const Description = () => {
   const descriptionInfo = [
     {
       title: "Timing",
-      info: "The full length of the test is timed to the real SAT test But you can exit the test any time by clicking on save and exis button.You can also navigate from one question to another.",
+      info: "The full length of the test is timed to the real SAT test But you can exit the test any time by clicking on save and exit button.You can also navigate from one question to another.",
     },
     {
       title: "Scores",
-      info: "Whe You finish the test , go to my SAT test to view your scores.",
+      info: "When You finish the test , go to my SAT test to view your scores.",
     },
     {
       title: "Assistive Technology",
@@ -33,7 +33,7 @@ const Description = () => {
     },
     {
       title: "Alert",
-      info: "Please do not press esc button as it may lead to test cancellation.",
+      info: "Please do not press escape button ( avoid using keyboard ) as it may lead to test cancellation.",
     },
   ];
 
@@ -123,6 +123,10 @@ const Description = () => {
                     justifyContent: "center",
                     marginTop: "4%",
                     cursor: "pointer",
+                    backgroundColor:'blue',
+                    color:'white',
+                    padding:'1%',
+                    borderRadius:'.7vw'
                   }}
                   onClick={() => {
                     dispatch(setTestStartTIme(new Date()));

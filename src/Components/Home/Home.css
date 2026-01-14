@@ -35,6 +35,32 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.loginBtn {
+  background-color: transparent;
+  padding: 1%;
+  border-radius: 0.4vw;
+  color: #333f6b !important;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bolder !important;
+  border: 2px solid #333f6b;
+}
+.loginBtn:hover {
+  background-color: #070c1e;
+  padding: 1%;
+  border-radius: 0.4vw;
+  color: white !important;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
 
 .App-link {
   color: #61dafb;
@@ -2623,7 +2649,8 @@ label {
 
 .preloader__img-logo {
   display: block;
-  width: 40rem;
+  width: auto;
+  height: auto;
 }
 
 .preloader__img-blur {
@@ -4112,6 +4139,7 @@ label {
   display: inline-block;
   overflow: hidden;
   margin-bottom: -0.3em;
+  width: 100%;
 }
 
 .heading__span-strong {
@@ -4119,6 +4147,7 @@ label {
   bottom: 0;
   display: inline-block;
   font-weight: 500;
+  font-size: 2.4vw;
 }
 
 .video__wrap {
@@ -4611,11 +4640,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #860d1c;
+  background: gray;
+  border-radius: 5vw;
 }
 
 ::-webkit-scrollbar-track {
@@ -4875,14 +4905,20 @@ html {
 }
 
 .Brandtitle {
-  font-family: serif;
+  /* font-family: serif; */
   text-align: center;
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #890e1f;
-  margin-top: -6rem;
+  color: #333f6b;
+  /* margin-top: -6rem; */
 }
-
+.brandDiscription {
+  font-size: 2rem;
+  color: #333f6b;
+}
+.brandlogoTop {
+  font-size: 3vw;
+}
 .slideup {
   animation-name: slideup;
   animation-duration: 1.5s;
@@ -4976,12 +5012,12 @@ html {
   font-size: 22px !important;
   font-weight: 500;
   font-weight: bold;
-  color: #860d1c;
+  color: #333f6b;
   margin-block: 0.75rem;
 }
 
 .position {
-  color: #860d1c8f;
+  color: #101734;
   font-size: 14px;
 }
 .carousel-testimonial .owl-nav {
@@ -5115,9 +5151,10 @@ html {
  } */
 .achievewrapper {
   gap: 1rem;
+  border-radius: 2vw;
 }
 .no {
-  color: #860d1c;
+  color: #333f6b;
   font-size: 30px;
   padding: 10px;
   font-weight: 600;
@@ -5135,7 +5172,7 @@ html {
   align-items: center;
   padding: 10px;
   scale: 1.1;
-  background: #046635;
+  background: #0a1027;
 }
 .candidateinfo {
   color: white;
@@ -5143,6 +5180,7 @@ html {
   height: 100%;
   text-align: center;
   align-content: center;
+  border-radius: 2vw;
 }
 .candidateinfo .name {
   color: white;
@@ -5158,16 +5196,16 @@ html {
   font-size: 14px;
 }
 .bggreen {
-  background-color: #046635;
+  background-color: #0a1027;
 }
 .bgred {
-  background-color: #860d1c;
+  background-color: #0a1027;
 }
 .bottomblock {
   margin-top: 3rem;
 }
 .bottomblock .rank {
-  background-color: #860d1c;
+  background-color: #333f6b;
 }
 .flex-column {
   flex-direction: column;
@@ -5210,6 +5248,7 @@ html {
     margin-inline: auto;
   }
 }
+
 @media screen and (max-width: 576px) {
   .flaganimation_wrapper {
     width: 320px;
@@ -5456,7 +5495,7 @@ input {
   display: flex;
   flex-direction: column;
   position: relative;
-  color: #ea1d6f;
+  color: #333f6b;
   font-size: 26px;
 }
 
@@ -5468,7 +5507,7 @@ input {
   bottom: -10px;
   width: 25px;
   height: 4px;
-  background: #860d1c;
+  background: white;
 }
 
 .app-contact {
@@ -5549,35 +5588,10 @@ input {
   margin: 0 5px;
 }
 
-.loginBtn {
-  background-color: #860d1c;
-  padding: 1%;
-  border-radius: 0.4vw;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  cursor: pointer;
-}
-.loginBtn:hover {
-  background-color: #c12b3c;
-  padding: 1%;
-  border-radius: 0.4vw;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  cursor: pointer;
-}
-
 .navItems {
   /* padding: 1%; */
   border-radius: 0.4vw;
-  color: #c12b3c;
+  color: #333f6b;
   text-decoration: none;
   text-align: center;
   align-items: center;
@@ -5589,7 +5603,7 @@ input {
 .navItems:hover {
   /* padding: 1%; */
   border-radius: 0.4vw;
-  color: #df5464;
+  color: #465eaa;
   text-decoration: none;
   text-align: center;
   align-items: center;
@@ -5618,6 +5632,10 @@ input {
   .app-title:after {
     display: none;
   }
+  .brandlogoTop {
+    font-size: 8vw;
+    font-weight: bolder;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -5628,4 +5646,76 @@ input {
   .screen-body-item {
     padding: 0;
   }
+}
+@media screen and (max-width: 420px) {
+  .heading__span-strong {
+    width: 100%;
+    position: relative;
+    bottom: 2;
+    display: inline-block;
+    font-weight: bolder;
+    font-size: 4.3vw;
+  }
+  .loginBtn {
+    background-color: transparent !important;
+    padding: 1%;
+    border-radius: 3vw;
+    color: #333f6b !important;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 150%;
+    font-size: 6vw;
+    font-weight: bolder !important;
+    cursor: pointer;
+    border: 0px;
+  }
+  .loginBtn:hover {
+    background-color: #070c1e;
+    padding: 1%;
+    border-radius: 0.4vw;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bolder;
+  }
+}
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999999;
+  scale: 0.7;
+  cursor: pointer;
+}
+.call {
+  position: fixed;
+  bottom: 100px;
+  right: 40px;
+  z-index: 9999999999;
+  scale: 0.8;
+  cursor: pointer;
+}
+@media screen and (max-width:420px) {
+  .whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 0px;
+  z-index: 9999999999;
+  scale: 0.7;
+  cursor: pointer;
+}
+.call {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 9999999999;
+  scale: 0.8;
+  cursor: pointer;
+}
 }

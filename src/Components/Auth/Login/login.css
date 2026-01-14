@@ -8,13 +8,16 @@
 .authHeader {
   font-size: 2vw;
   font-weight: 600;
-  color: rgb(126, 23, 28);
+  color: rgb(42, 120, 255);
+  color: #333f6b;
+  color: #c5d2ff;
   margin-bottom: 5%;
 }
 .authStyle {
   width: 40%;
   height: 100vh;
-  background-color: rgb(126, 23, 28);
+  background-color: rgb(42, 120, 255);
+  background-color: #333f6b;
 }
 .authStyle2 {
   width: 40%;
@@ -49,7 +52,7 @@
   margin-top: 3%;
 }
 .alternateOption:hover {
-  color: rgb(126, 23, 28);
+  color: blue;
 }
 .smallText:hover {
   color: rgb(126, 23, 28);
@@ -98,13 +101,13 @@
   .authHeader {
     font-size: 7vw;
     font-weight: 600;
-    color: rgb(126, 23, 28);
+    color: #333f6b;
     margin-bottom: 5%;
   }
   .authStyle {
     width: 40%;
     height: 100vh;
-    background-color: rgb(126, 23, 28);
+    background-color: #333f6b;
   }
   .authFormContainer {
     width: 100%;

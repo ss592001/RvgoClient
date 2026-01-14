@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="lastbox">
         <div className=" flogoContainer">
           <img src={logo} alt="logo" className="fLogoImage" />
-          <span className="flogo">HELIOS</span>
+          <span className="flogo">RVGOPREP</span>
         </div>
         <div className="disc1">A Digital Test Platform</div>
         <div style={{ display: "flex" }} className="logobox">
